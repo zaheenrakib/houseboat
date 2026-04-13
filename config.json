@@ -1,0 +1,202 @@
+{
+  "business": {
+    "name": "JolpoddoBD",
+    "tagline": "Premium Houseboat Rental & River Tourism",
+    "description": "Experience serenity on water with JolpoddoBD. Luxury houseboat experiences, affordable packages, and unforgettable river adventures in Bangladesh",
+    "logo": "🚤"
+  },
+  "contact": {
+    "phone": "+880 1234 567890",
+    "email": "info@jolpoddo.com",
+    "address": "Dhaka, Bangladesh",
+    "whatsapp": "8801234567890",
+    "hours": "24/7 Available"
+  },
+  "social": {
+    "facebook": "https://facebook.com/jolpoddo",
+    "instagram": "https://instagram.com/jolpoddo",
+    "whatsapp": "https://wa.me/8801234567890"
+  },
+  "colors": {
+    "primary": "#0066cc",
+    "light": "#e6f2ff",
+    "accent": "#d4a574",
+    "dark": "#1a1a1a",
+    "text": "#666666"
+  },
+  "packages": [
+    {
+      "id": 1,
+      "name": "Couple Package",
+      "price": "৳ 8,500/night",
+      "description": "Perfect romantic getaway for couples",
+      "features": [
+        "Luxury Suite",
+        "Romantic Dinner",
+        "Sunset Cruise",
+        "Breakfast Included"
+      ],
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663498357489/kNAYpW6dUMDAWtbs7PRuz3/jolpoddo-hero-5X5cnQBky2GCC5erCyKrWx.webp",
+      "featured": false
+    },
+    {
+      "id": 2,
+      "name": "Family Package",
+      "price": "৳ 15,000/night",
+      "description": "Ideal for family bonding and fun",
+      "features": [
+        "2 Bedrooms",
+        "Family Meals",
+        "Entertainment",
+        "Water Activities"
+      ],
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663498357489/kNAYpW6dUMDAWtbs7PRuz3/jolpoddo-family-L8rpykyU7CbPndbMaBXcUb.webp",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "name": "Corporate Package",
+      "price": "৳ 25,000+/day",
+      "description": "Perfect for team building and corporate events",
+      "features": [
+        "Meeting Facilities",
+        "Team Activities",
+        "Catering Service",
+        "Custom Itinerary"
+      ],
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663498357489/kNAYpW6dUMDAWtbs7PRuz3/jolpoddo-events-D5qA7jgBqfvpAPgm6jaYHL.webp",
+      "featured": false
+    },
+    {
+      "id": 4,
+      "name": "Event Package",
+      "price": "Custom Pricing",
+      "description": "Celebrate your special moments on water",
+      "features": [
+        "Venue Decoration",
+        "Catering",
+        "Entertainment",
+        "Photography"
+      ],
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663498357489/kNAYpW6dUMDAWtbs7PRuz3/jolpoddo-events-D5qA7jgBqfvpAPgm6jaYHL.webp",
+      "featured": false
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Fatima & Ahmed Khan",
+      "rating": 5,
+      "text": "An absolutely magical experience! The houseboat was luxurious, the crew was amazing, and the sunset views were breathtaking. Highly recommended!"
+    },
+    {
+      "id": 2,
+      "name": "Rajib Family",
+      "rating": 5,
+      "text": "Perfect getaway for our family. The kids loved the activities, and the food was delicious. We'll definitely come back!"
+    },
+    {
+      "id": 3,
+      "name": "Dhaka Tech Solutions",
+      "rating": 5,
+      "text": "Best corporate retreat we've ever had. Professional service, beautiful venue, and excellent food. Thank you JolpoddoBD!"
+    },
+    {
+      "id": 4,
+      "name": "Nadia & Samir",
+      "rating": 5,
+      "text": "Our wedding reception on the houseboat was unforgettable. Every detail was perfect. Highly professional team!"
+    },
+    {
+      "id": 5,
+      "name": "Priya & Arjun",
+      "rating": 5,
+      "text": "Romantic getaway exceeded all expectations. The personalized service and attention to detail was exceptional."
+    },
+    {
+      "id": 6,
+      "name": "International Tourist Group",
+      "rating": 5,
+      "text": "Amazing value for money! Luxury experience at affordable prices. The crew made us feel like family."
+    }
+  ],
+  "highlights": [
+    {
+      "icon": "✨",
+      "title": "Luxury Houseboats",
+      "description": "Premium amenities and world-class comfort"
+    },
+    {
+      "icon": "💰",
+      "title": "Affordable Packages",
+      "description": "Competitive pricing for every budget"
+    },
+    {
+      "icon": "🛡️",
+      "title": "Safe & Secure",
+      "description": "Professional crew and safety standards"
+    }
+  ],
+  "whyUs": [
+    {
+      "title": "15+ Years Experience",
+      "description": "Trusted by thousands of guests for unforgettable river experiences"
+    },
+    {
+      "title": "Premium Houseboats",
+      "description": "Modern amenities with traditional Bengali hospitality"
+    },
+    {
+      "title": "Expert Crew",
+      "description": "Professional, trained, and courteous staff"
+    },
+    {
+      "title": "Best Locations",
+      "description": "Strategic routes through Bangladesh's most scenic rivers"
+    },
+    {
+      "title": "Flexible Packages",
+      "description": "Customizable itineraries for every occasion"
+    },
+    {
+      "title": "24/7 Support",
+      "description": "Round-the-clock customer service and assistance"
+    }
+  ],
+  "gallery": [
+    {
+      "title": "Luxury Rooms",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663498357489/kNAYpW6dUMDAWtbs7PRuz3/jolpoddo-luxury-room-QQDtxxHupe8L7UNdXyxRJe.webp"
+    },
+    {
+      "title": "Fine Dining",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663498357489/kNAYpW6dUMDAWtbs7PRuz3/jolpoddo-dining-oCu5LU4vRsehgTuKsPiGSy.webp"
+    },
+    {
+      "title": "Family Activities",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663498357489/kNAYpW6dUMDAWtbs7PRuz3/jolpoddo-family-L8rpykyU7CbPndbMaBXcUb.webp"
+    },
+    {
+      "title": "Events & Celebrations",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310519663498357489/kNAYpW6dUMDAWtbs7PRuz3/jolpoddo-events-D5qA7jgBqfvpAPgm6jaYHL.webp"
+    }
+  ],
+  "destinations": [
+    {
+      "name": "Padma River",
+      "description": "Majestic river with scenic views"
+    },
+    {
+      "name": "Meghna River",
+      "description": "Serene waters and natural beauty"
+    },
+    {
+      "name": "Sundarbans",
+      "description": "Mangrove forests and wildlife"
+    },
+    {
+      "name": "Dhaka Waterways",
+      "description": "Urban river experience"
+    }
+  ]
+}
