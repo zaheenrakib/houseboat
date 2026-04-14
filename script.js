@@ -3,6 +3,14 @@
 // ============================================
 
 // DOM Elements
+const welcomeModal = document.getElementById('welcomeModal');
+const closeWelcome = document.querySelector('.close-welcome');
+const closeModalBtn = document.querySelector('.close-modal-btn');
+const prevMonthBtn = document.getElementById('prevMonth');
+const nextMonthBtn = document.getElementById('nextMonth');
+const currentMonthYear = document.getElementById('currentMonthYear');
+const calendarDays = document.getElementById('calendarDays');
+
 const bookingModal = document.getElementById('bookingModal');
 const ctaBtn = document.querySelector('.cta-btn');
 const bookingBtns = document.querySelectorAll('.package-card .btn-primary');
@@ -10,9 +18,44 @@ const closeBtn = document.querySelector('.close');
 const bookingForm = document.querySelector('.booking-form');
 const contactForm = document.querySelector('.contact-form');
 
+// Calendar State
+let currentDate = new Date();
+let currentMonth = currentDate.getMonth();
+let currentYear = currentDate.getFullYear();
+
+// Bangla Names
+const banglaMonths = [
+    'জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন',
+    'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'
+];
+
+const banglaNumbers = {
+    '0': '০', '1': '১', '2': '২', '3': '৩', '4': '৪',
+    '5': '৫', '6': '৬', '7': '৭', '8': '৮', '9': '৯'
+};
+
+function toBanglaNumber(n) {
+    return n.toString().split('').map(char => banglaNumbers[char] || char).join('');
+}
+
 // ============================================
 // MODAL FUNCTIONALITY
 // ============================================
+
+// Open Welcome Modal
+function openWelcomeModal() {
+    if (welcomeModal) {
+        welcomeModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        renderCalendar(currentMonth, currentYear);
+    }
+}
+
+// Close Welcome Modal
+function closeWelcomeModal() {
+    welcomeModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
 
 // Open Booking Modal
 function openBookingModal() {
@@ -35,10 +78,16 @@ bookingBtns.forEach(btn => {
 
 closeBtn.addEventListener('click', closeBookingModal);
 
+if (closeWelcome) closeWelcome.addEventListener('click', closeWelcomeModal);
+if (closeModalBtn) closeModalBtn.addEventListener('click', closeWelcomeModal);
+
 // Close modal when clicking outside
 window.addEventListener('click', (e) => {
     if (e.target === bookingModal) {
         closeBookingModal();
+    }
+    if (e.target === welcomeModal) {
+        closeWelcomeModal();
     }
 });
 
@@ -61,12 +110,12 @@ if (bookingForm) {
         
         // Validate
         if (!name || !email || !phone || !date || !guests || !package) {
-            alert('Please fill in all fields');
+            alert('অনুগ্রহ করে সব ঘর পূরণ করুন');
             return;
         }
         
         // Show success message
-        showSuccessMessage('Booking request received! We will contact you soon.');
+        showSuccessMessage('বুকিং অনুরোধ পাওয়া গেছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।');
         
         // Reset form
         bookingForm.reset();
@@ -99,12 +148,12 @@ if (contactForm) {
         
         // Validate
         if (!name || !email || !phone || !message) {
-            alert('Please fill in all fields');
+            alert('অনুগ্রহ করে সব ঘর পূরণ করুন');
             return;
         }
         
         // Show success message
-        showSuccessMessage('Message sent successfully! We will get back to you soon.');
+        showSuccessMessage('বার্তা সফলভাবে পাঠানো হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।');
         
         // Reset form
         contactForm.reset();
@@ -173,9 +222,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+        navbar.classList.remove('scrolled');
     }
 });
 
@@ -271,12 +320,93 @@ function openLightbox(src, alt) {
 }
 
 // ============================================
+// CALENDAR LOGIC
+// ============================================
+
+function renderCalendar(month, year) {
+    calendarDays.innerHTML = '';
+    
+    // Set Header
+    currentMonthYear.textContent = `${banglaMonths[month]} ${toBanglaNumber(year)}`;
+    
+    // First day of month
+    const firstDay = new Date(year, month, 1).getDay();
+    // Adjust for Bengali week starting with Saturday (if needed, but here we stay consistent with HTML)
+    // HTML has: শনি, রবি, সোম, মঙ্গল, বুধ, বৃহস্পতি, শুক্র
+    // JS getDay(): 0 (Sun), 1 (Mon), ..., 6 (Sat)
+    // We want Shoni (Sat) to be 0 for our CSS grid
+    let adjustedFirstDay = (firstDay + 1) % 7; 
+
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    
+    // Add empty slots
+    for (let i = 0; i < adjustedFirstDay; i++) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.classList.add('empty');
+        calendarDays.appendChild(emptyDiv);
+    }
+    
+    // Today's date for reference
+    const today = new Date();
+    
+    // Mock Availability (you could replace this with real data)
+    const bookedDates = [5, 6, 12, 13, 20, 25, 26]; 
+
+    // Add days
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.textContent = toBanglaNumber(day);
+        dayDiv.classList.add('day');
+        
+        // Check if booked or available (Mocking)
+        if (day < today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+            dayDiv.style.opacity = '0.3';
+            dayDiv.style.cursor = 'default';
+        } else if (bookedDates.includes(day)) {
+            dayDiv.classList.add('booked');
+        } else {
+            dayDiv.classList.add('available');
+        }
+        
+        calendarDays.appendChild(dayDiv);
+    }
+}
+
+// Month Navigation
+if (prevMonthBtn) {
+    prevMonthBtn.addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar(currentMonth, currentYear);
+    });
+}
+
+if (nextMonthBtn) {
+    nextMonthBtn.addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar(currentMonth, currentYear);
+    });
+}
+
+// Show Modal on Load
+window.addEventListener('load', () => {
+    setTimeout(openWelcomeModal, 500); // Small delay for effect
+});
+
+// ============================================
 // WHATSAPP INTEGRATION
 // ============================================
 
 function sendWhatsAppMessage() {
     const phoneNumber = '8801234567890'; // Replace with your WhatsApp number
-    const message = 'Hi JolpoddoBD, I am interested in booking a houseboat. Can you provide more information?';
+    const message = 'নমস্কার জলপদ্ম বিডি, আমি হাউসবোট বুকিং করতে আগ্রহী। বিস্তারিত তথ্য দিলে ভালো হয়।';
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
 }
